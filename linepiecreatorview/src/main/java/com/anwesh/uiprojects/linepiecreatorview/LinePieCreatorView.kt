@@ -12,7 +12,7 @@ import android.graphics.Paint
 import android.graphics.Canvas
 import android.graphics.Color
 
-val colors : Array<String> = arrayOf("", "", "", "", "")
+val colors : Array<String> = arrayOf("#3F51B5", "#4CAF50", "#F44336", "#2196F3", "#009688")
 val parts : Int = 4
 val scGap : Float = 0.02f / parts
 val strokeFactor : Int = 90
@@ -59,14 +59,16 @@ fun Canvas.drawLPCNode(i : Int, scale : Float, paint : Paint) {
 
 class LinePieCreatorView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
