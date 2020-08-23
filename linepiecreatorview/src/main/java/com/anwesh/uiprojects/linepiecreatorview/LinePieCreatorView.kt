@@ -208,4 +208,13 @@ class LinePieCreatorView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LinePieCreatorView {
+            val view : LinePieCreatorView = LinePieCreatorView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
